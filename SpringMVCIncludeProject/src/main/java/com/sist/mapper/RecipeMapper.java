@@ -63,4 +63,24 @@ public interface RecipeMapper {
 		  +"WHERE chef=#{chef}")
    public int chefMakeRecipeTotalPage(String chef);
    // 레시피 찾기 
+   @Select("SELECT no,poster,title,chef,num "
+			  +"FROM (SELECT no,poster,title,chef,rownum as num "
+			  +"FROM (SELECT /*+ INDEX_ASC(recipe recipe_no_pk)*/no,poster,title,chef "
+			  +"FROM recipe WHERE no IN(SELECT no FROM recipe INTERSECT SELECT no FROM recipedetail) "
+			  +"AND title LIKE '%'||#{find}||'%' "
+			  +"ORDER BY no ASC)) "
+			  +"WHERE num BETWEEN #{start} AND #{end}")
+   public List<RecipeVO> recipeFindData(Map map);
+   
+   @Select("SELECT CEIL(COUNT(*)/12.0) "
+			  +"FROM recipe "
+			  +"WHERE title LIKE '%'||#{find}||'%' "
+			  +"AND no IN(SELECT no FROM recipe INTERSECT SELECT no FROM recipedetail)")
+   public int recipeFindTotalPage(String find);
+   // 인기레시피 top 5
+   @Select("SELECT no,poster,title,chef,rownum "
+   		+ "FROM (SELECT no,poster,title,chef FROM recipe WHERE no IN(SELECT no FROM recipe INTERSECT SELECT no FROM recipedetail) "
+   		+ "ORDER BY hit DESC) "
+   		+ "WHERE rownum <= 5")
+   public List<RecipeVO> recipeTop5Data();
 }

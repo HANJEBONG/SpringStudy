@@ -10,8 +10,12 @@ import com.sist.dao.FoodDAO;
 import com.sist.vo.FoodVO;
 @Service
 public class FoodServiceImp1 implements FoodService{
-	@Autowired
 	private FoodDAO dao;
+	
+	@Autowired
+	public FoodServiceImp1(FoodDAO dao) {
+		this.dao=dao;
+	}
 	
 	@Override
 	public List<FoodVO> foodListData(Map map) {
@@ -35,6 +39,12 @@ public class FoodServiceImp1 implements FoodService{
 	public FoodVO foodDetailData(int fno) {
 		// TODO Auto-generated method stub
 		return dao.foodDetailData(fno);
+	}
+
+	@Override
+	public List<FoodVO> foodTop5Data() {
+		// TODO Auto-generated method stub
+		return dao.foodTop5Data();
 	}
 
 }

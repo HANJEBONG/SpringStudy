@@ -15,8 +15,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class FoodController {
+	
+	private FoodService fService;
+	
 	@Autowired
-	private FoodServiceImp1 fService;
+	public FoodController(FoodService fService) {
+		this.fService=fService;
+	}
 	
 	@GetMapping("food/list.do")
 	public String food_list(String page,Model model,HttpServletRequest request) {

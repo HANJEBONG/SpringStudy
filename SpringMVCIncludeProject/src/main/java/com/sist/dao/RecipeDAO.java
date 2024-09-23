@@ -89,11 +89,25 @@ public class RecipeDAO {
   {
   	return mapper.chefMakeRecipeData(map);
   }
+  
   public int chefMakeRecipeTotalPage(String chef)
   {
   	return mapper.chefMakeRecipeTotalPage(chef);
   }
+  
   public RecipeVO cookieData(int no) {
 	  return mapper.cookieData(no);
+  }
+  
+  public List<RecipeVO> recipeFindData(Map map){
+	  return mapper.recipeFindData(map);
+  }
+  
+  public int recipeFindTotalPage(String find) {
+	  return mapper.recipeFindTotalPage(find);
+  }
+  
+  public List<RecipeVO> recipeTop5Data(){
+	  return mapper.recipeTop5Data();
   }
 }

@@ -19,7 +19,7 @@
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="../recipe/chef_list.do">쉐프</a></li>
-          <li><a href="#">레시피 찾기</a></li>
+          <li><a href="../recipe/find.do">레시피 찾기</a></li>
         </ul>
       </li>
       <li class="dropdown">

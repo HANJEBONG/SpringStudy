@@ -58,4 +58,22 @@ public class RecipeServiceImp1 implements RecipeService{
 		// TODO Auto-generated method stub
 		return dao.cookieData(no);
 	}
+
+	@Override
+	public List<RecipeVO> recipeFindData(Map map) {
+		// TODO Auto-generated method stub
+		return dao.recipeFindData(map);
+	}
+
+	@Override
+	public int recipeFindTotalPage(String find) {
+		// TODO Auto-generated method stub
+		return dao.recipeFindTotalPage(find);
+	}
+
+	@Override
+	public List<RecipeVO> recipeTop5Data() {
+		// TODO Auto-generated method stub
+		return dao.recipeTop5Data();
+	}
 }
